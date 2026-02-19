@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Driving AI 2026 | احتراف السياقة</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* إضافة لمسة تصميم سريعة لضمان ظهور التطبيق بشكل رائع فوراً */
+        :root {
+            --primary-green: #1e4d3e;
+            --accent-teal: #7ebfae;
+            --white: #ffffff;
+            --bg-gradient: linear-gradient(180deg, #1a3c31 0%, #2d5a4c 100%);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-wrapper">
+        <header class="main-header">
+            <div class="logo-area">
+                <i class="fas fa-robot AI-icon"></i>
+                <h1>Driving AI <span>2026</span></h1>
+            </div>
+            <div class="status-bar">
+                <span id="score">النتيجة: 0</span>
+                <span id="timer"><i class="far fa-clock"></i> 00:00</span>
+            </div>
+        </header>
+
+        <main class="quiz-container">
+            <section class="image-viewer">
+                <div class="img-card">
+                    <img id="question-image" src="assets/placeholder.png" alt="تحميل الصورة...">
+                    <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+                </div>
+            </section>
+
+            <section class="question-box">
+                <h2 id="question-text">هل أنت مستعد لبدء الاختبار؟</h2>
+                <div class="progress-bar-container">
+                    <div id="progress-fill" style="width: 0%;"></div>
+                </div>
+            </section>
+
+            <section id="options-container" class="options-grid">
+                <button class="start-btn" onclick="initApp()">ابدأ الآن <i class="fas fa-play"></i></button>
+            </section>
+        </main>
+
+        <footer class="bottom-nav">
+            <button class="nav-item active"><i class="fas fa-home"></i><span>الرئيسية</span></button>
+            <button class="nav-item"><i class="fas fa-book"></i><span>قانون السير</span></button>
+            <button class="nav-item"><i class="fas fa-chart-line"></i><span>نتائجي</span></button>
+            <button class="nav-item"><i class="fas fa-cog"></i><span>الإعدادات</span></button>
+        </footer>
+    <script type="module" src="game.js"></script><script src="Driving_Neural_Logic.js"></script>
+<script src="Driving_Smart_Search.js"></script>
+</body>
+</html>
