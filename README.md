@@ -1,14 +1,134 @@
+/**
+ * 🛰️ DRIVING AI 2026 | SUPER NEURAL CORE v2.0
+ * القوة التكنولوجية المضاعفة: نظام هجين يعتمد على المعالجة المتوازنة
+ */
 
-# 🛰️ Driving AI 2026 | Neural Core System
-### أول نظام مغربي ذكي لتعليم السياقة (نسخة 2026)
+const NeuralCore = (() => {
+    // 🧠 الإعدادات العميقة (Deep Config)
+    const _config = Object.freeze({
+        API_PATH: 'questions.json',
+        DEDUCTION_RATE: 2,
+        PASS_MARK: 32,
+        MAX_POINTS: 30,
+        VOICE_RATE: 0.85
+    });
 
-نظام متكامل يعتمد على "النواة العصبية" لربط قوانين السير بالمحاكاة التفاعلية.
+    // 💾 حالة الذاكرة الحية
+    let _state = {
+        db: [],
+        currentIndex: 0,
+        currentPoints: _config.MAX_POINTS,
+        totalScore: 0,
+        startTime: null,
+        userHistory: []
+    };
 
-## 🚀 المكونات الأساسية
-1. **Neural Logic:** المحرك المركزي لإدارة الاختبارات.
-2. **Smart Search:** محرك بحث فوري في مدونة السير.
-3. **Responsive UI:** واجهة زجاجية متوافقة مع جميع الأجهزة.
+    // 🎙️ محرك الصوت المطور
+    const speak = (text) => {
+        window.speechSynthesis.cancel(); // إيقاف أي صوت سابق فوراً
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ar-SA';
+        utterance.rate = _config.VOICE_RATE;
+        utterance.pitch = 1.1;
+        window.speechSynthesis.speak(utterance);
+    };
 
-## 🛠️ التعليمات
-- يتم استدعاء قاعدة البيانات عبر `questions.json`.
-- نظام النقاط يعتمد على خصم النقاط التلقائي عند المخالفات القانونية.
+    return {
+        async powerUp() {
+            try {
+                console.log("🛰️ تفعيل النواة العصبية...");
+                const response = await fetch(_config.API_PATH);
+                _state.db = await response.json();
+                _state.startTime = Date.now();
+                this.renderFrame();
+                speak("نظام الذكاء الاصطناعي جاهز. تم تحميل قاعدة البيانات السيادية.");
+            } catch (error) {
+                console.error("❌ فشل في استدعاء النواة:", error);
+                speak("خطأ في الاتصال بقاعدة البيانات.");
+            }
+        },
+
+        renderFrame() {
+            const q = _state.db[_state.currentIndex];
+            const app = document.getElementById('app-display');
+            
+            // تصميم زجاجي متطور يعتمد على نسب الـ CSS المبرمجة
+            app.innerHTML = `
+                <div class="neural-card fade-in">
+                    <div class="image-wrapper">
+                        <img src="${q.img}" id="main-frame" onerror="this.src='https://via.placeholder.com/600x300?text=AI_SCANNING...'">
+                        <div class="law-tag">${q.law_ref}</div>
+                    </div>
+                    <div class="question-content">
+                        <p class="step-indicator">سؤال ${_state.currentIndex + 1} من ${_state.db.length}</p>
+                        <h3>${q.q}</h3>
+                    </div>
+                    <div class="options-engine">
+                        ${q.options.map((opt, i) => `
+                            <button class="neural-btn" onclick="NeuralCore.processDecision(${i})">
+                                <span class="btn-index">${i + 1}</span>
+                                <span class="btn-text">${opt}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            // تفعيل "القوة الوصفية" لكل سؤال
+            if(_state.currentIndex === 0) speak(q.q);
+        },
+
+        processDecision(choice) {
+            const correct = _state.db[_state.currentIndex].answer;
+            const isCorrect = (choice === correct);
+
+            if (isCorrect) {
+                _state.totalScore++;
+                // تأثير صوتي بسيط للنجاح (اختياري)
+            } else {
+                _state.currentPoints -= _config.DEDUCTION_RATE;
+                this.updateBioMetrics();
+                speak("انتباه، مخالفة قانونية.");
+            }
+
+            this.nextCycle();
+        },
+
+        updateBioMetrics() {
+            const counter = document.getElementById('score-counter');
+            if (counter) {
+                counter.innerText = `النقاط الحيوية: ${_state.currentPoints}`;
+                counter.classList.add('pulse-red');
+            }
+        },
+
+        nextCycle() {
+            _state.currentIndex++;
+            if (_state.currentIndex < _state.db.length && _state.currentPoints > 0) {
+                this.renderFrame();
+            } else {
+                this.terminate();
+            }
+        },
+
+        terminate() {
+            const timeTaken = Math.floor((Date.now() - _state.startTime) / 1000);
+            const status = _state.totalScore >= _config.PASS_MARK ? "ناجح بقوة الذكاء" : "تحتاج لمراجعة النواة";
+            
+            document.getElementById('app-display').innerHTML = `
+                <div class="result-matrix fade-in">
+                    <h2>تحليل الأداء النهائي</h2>
+                    <div class="stat-grid">
+                        <div class="stat-item"><span>النتيجة:</span> <strong>${_state.totalScore}</strong></div>
+                        <div class="stat-item"><span>الوقت:</span> <strong>${timeTaken} ثانية</strong></div>
+                    </div>
+                    <h3 class="${_state.totalScore >= _config.PASS_MARK ? 'success' : 'fail'}">${status}</h3>
+                    <button class="neural-btn" onclick="location.reload()">إعادة تشغيل النظام</button>
+                </div>
+            `;
+            speak(`انتهى الاختبار. نتيجتك هي ${_state.totalScore}. ${status}`);
+        }
+    };
+})();
+
+// تشغيل المحرك بقوة 10 أضعاف عند تحميل النافذة
+window.onload = () => NeuralCore.powerUp();
