@@ -1,35 +1,37 @@
-
-  "metadata": {
-    "db_version": "2.0.1",
-    "region": "MOROCCO_2026",
-    "encryption": "AES_LIGHT"
+[
+  {
+    "q": "هذه العلامة كتعلم على خطر تساقط الأحجار؟",
+    "options": ["نعم", "لا"],
+    "answer": 0,
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Morocco_road_sign_A13.svg/400px-Morocco_road_sign_A13.svg.png",
+    "law_ref": "المادة 45: علامات الخطر"
   },
-  "content": {
-    "SIGNS": {
-      "label": "قواعد التشوير",
-      "questions": [
-        {
-          "id": "S101",
-          "text": "عند ملتقى الطرق القادم، هل الأسبقية للسيارة القادمة من اليمين؟",
-          "image": "assets/signs/priority_right.webp",
-          "options": ["نعم، دائماً", "لا، أنا في طريق رئيسية", "نعم، إذا غابت العلامات"],
-          "correct_index": 2,
-          "explanation": "في غياب علامات التشوير، تُطبق قاعدة الأسبقية لليمين طبقاً لمدونة السير."
-        }
-      ]
-    },
-    "MECHANICS": {
-      "label": "ميكانيك العربة",
-      "questions": [
-        {
-          "id": "M502",
-          "text": "اشتغال هذا الضوء الجاذب أثناء السير يشير إلى:",
-          "image": "assets/signs/oil_warning.webp",
-          "options": ["انخفاض ضغط الزيت", "نقص في سائل التبريد", "تآكل صفائح الفرامل"],
-          "correct_index": 0,
-          "explanation": "هذا الرمز يشير إلى خطر في ضغط زيت المحرك، يجب التوقف فوراً."
-        }
-      ]
-    }
+  {
+    "q": "واجب عليا نوقف عند هاد العلامة؟",
+    "options": ["نعم", "لا"],
+    "answer": 0,
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Morocco_road_sign_B2a.svg/400px-Morocco_road_sign_B2a.svg.png",
+    "law_ref": "المادة 51: علامة قف"
+  },
+  {
+    "q": "هاد العلامة كتمنع مرور الدراجات؟",
+    "options": ["نعم", "لا"],
+    "answer": 0,
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Morocco_road_sign_B11.svg/400px-Morocco_road_sign_B11.svg.png",
+    "law_ref": "المادة 48: علامات المنع"
+  },
+  {
+    "q": "مسموح ليا نتابع السير للقدام فهاد الطريق؟",
+    "options": ["نعم", "لا"],
+    "answer": 1,
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Morocco_road_sign_B1.svg/400px-Morocco_road_sign_B1.svg.png",
+    "law_ref": "المادة 48: ممنوع المرور"
+  },
+  {
+    "q": "هاد العلامة كتعلم على وجود مستشفى؟",
+    "options": ["نعم", "لا"],
+    "answer": 0,
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Morocco_road_sign_E14.svg/400px-Morocco_road_sign_E14.svg.png",
+    "law_ref": "إرشادات طبية"
   }
-}
+]
